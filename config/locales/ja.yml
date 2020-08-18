@@ -5,6 +5,8 @@ ja:
       task:
         index: タスク一覧
         show: タスク詳細
+        new: タスクを作成する
+        edit: タスクを編集する
   link_name:
     models:
       task:
@@ -14,6 +16,7 @@ ja:
   activerecord:
     errors:
       messages:
+        number_of_errors: 件のエラーがあります。
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
