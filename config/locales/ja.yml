@@ -1,5 +1,14 @@
 ---
 ja:
+  view_title:
+    models:
+      task:
+        index: タスク一覧
+  link_name:
+    models:
+      task:
+        new: タスクを作成する
+  Are_you_sure_?: 本当に削除しますか？
   activerecord:
     errors:
       messages:
@@ -141,6 +150,9 @@ ja:
   helpers:
     select:
       prompt: 選択してください
+      show: 詳細
+      delete: 削除
+      edit: 編集
     submit:
       create: 登録する
       submit: 保存する
