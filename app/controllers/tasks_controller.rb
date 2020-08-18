@@ -32,6 +32,10 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+    @task.destroy
+    redirect_to tasks_path, notice:"Taskを削除しました"
+  end
 
   private
   def task_params
