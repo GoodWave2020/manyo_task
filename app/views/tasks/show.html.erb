@@ -1,5 +1,5 @@
-<h1>Task詳細画面</h1>
-<p>タイトル: <%= @task.name %></p>
-<p>内容: <%= @task.content %></p>
-<p>投稿時間: <%= @task.created_at %></p>
-<%= link_to "Task一覧へ", tasks_path %>
+<h1><%= t('view_title.models.task.show') %></h1>
+<p><%= t('activerecord.attributes.task.name') %>: <%= @task.name %></p>
+<p><%= t('activerecord.attributes.task.content') %>: <%= @task.content %></p>
+<p><%= t('activerecord.attributes.task.created_at') %>: <%= @task.created_at %></p>
+<%= link_to t('link_name.models.task.index'), tasks_path %>

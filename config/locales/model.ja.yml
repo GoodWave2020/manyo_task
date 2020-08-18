@@ -6,6 +6,7 @@ ja:
       task:
         name: タイトル
         content: 内容
+        created_at: 投稿時間
       user:
         name: 名前
         login_id: ログインID

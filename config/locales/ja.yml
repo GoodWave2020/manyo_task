@@ -4,10 +4,12 @@ ja:
     models:
       task:
         index: タスク一覧
+        show: タスク詳細
   link_name:
     models:
       task:
         new: タスクを作成する
+        index: タスク一覧へ
   Are_you_sure_?: 本当に削除しますか？
   activerecord:
     errors:
