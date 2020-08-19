@@ -1,20 +1,20 @@
-<h1>Task一覧</h1>
+<h1><%= t('view_title.models.task.index') %></h1>
 <p><%= notice %></p>
 <table>
   <tr>
-    <th>タイトル</th>
-    <th>内容</th>
+    <th><%= t('activerecord.attributes.task.name') %></th>
+    <th><%= t('activerecord.attributes.task.content') %></th>
   </tr>
-<% @tasks.each do |task| %>
-  <tr>
+<% @tasks.order(created_at: 'DESC').each do |task| %>
+  <tr class='task_row'>
     <td><%= task.name %></td>
     <td><%= task.content %></td>
     <td><%= task.created_at %></td>
-    <td><%= link_to "詳細", task_path(task.id) %></td>
-    <td><%= link_to "編集", edit_task_path(task.id) %></td>
-    <td><%= link_to "削除", task_path(task.id),
-            method: :delete, data: { confirm: "本当に削除しますか" } %></td>
+    <td><%= link_to t('helpers.select.show'), task_path(task.id) %></td>
+    <td><%= link_to t('helpers.select.edit'), edit_task_path(task.id) %></td>
+    <td><%= link_to t('helpers.select.delete'), task_path(task.id),
+            method: :delete, data: { confirm: t('Are_you_sure_?') } %></td>
   </tr>
 <% end %>
 </table>
-<%= link_to "Taskを作成する", new_task_path %>
+<%= link_to t('link_name.models.task.new'), new_task_path %>
