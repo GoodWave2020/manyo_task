@@ -5,7 +5,7 @@
     <th><%= t('activerecord.attributes.task.name') %></th>
     <th><%= t('activerecord.attributes.task.content') %></th>
   </tr>
-<% @tasks.each do |task| %>
+<% @tasks.order(created_at: 'DESC').each do |task| %>
   <tr>
     <td><%= task.name %></td>
     <td><%= task.content %></td>
