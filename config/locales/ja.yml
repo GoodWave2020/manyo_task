@@ -1,5 +1,9 @@
 ---
 ja:
+  notice:
+    new: タスクが追加されました。
+    edit: タスクが編集されました。
+    delete: タスクが削除されました。
   view_title:
     models:
       task:
