@@ -24,4 +24,12 @@ user_id  |integer
 --|--
 id  |integer  
 task_id  |integer
-user_id  |integer 
+user_id  |integer
+
+## herokuデプロイ手順
+1. アプリのディレクトリに移動
+2. herokuにログインしていなければ`heroku login`を実行、ブラウザでパスワード入力
+3. `$ heroku create`
+4. `$ rails assets:precompile RAILS_ENV=production`
+5. `$ git push heroku master`
+6. `$ heroku run rails db:migrate`
