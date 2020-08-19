@@ -6,7 +6,7 @@
     <th><%= t('activerecord.attributes.task.content') %></th>
   </tr>
 <% @tasks.order(created_at: 'DESC').each do |task| %>
-  <tr>
+  <tr class='task_row'>
     <td><%= task.name %></td>
     <td><%= task.content %></td>
     <td><%= task.created_at %></td>
