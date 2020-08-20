@@ -4,6 +4,8 @@
   <tr>
     <th><%= t('activerecord.attributes.task.name') %></th>
     <th><%= t('activerecord.attributes.task.content') %></th>
+    <th><%= t('activerecord.attributes.task.created_at') %></th>
+    <th><%= t('activerecord.attributes.task.dead_line') %></th>
   </tr>
 <% @tasks.order(created_at: 'DESC').each do |task| %>
   <tr class='task_row'>
