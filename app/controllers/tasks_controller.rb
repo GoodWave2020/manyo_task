@@ -2,14 +2,18 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:search] == nil
+    if params[:search] == nil && params[:name] == nil
       if params[:sort] == nil
         @tasks = Task.all.order('created_at DESC')
       else
         @tasks = Task.all.order(params[:sort])
       end
-    else
+    elsif params[:search].blank? && params[:name].present?
+      @tasks = Task.where('name like ?', "%#{params[:name]}%")
+    elsif params[:search].present? && params[:name].blank?
       @tasks = Task.where(status: params[:search])
+    else
+      @tasks = Task.where(status: params[:search]).where('name like ?', "%#{params[:name]}%")
     end
   end
 
@@ -47,7 +51,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:name, :content, :dead_line)
+    params.require(:task).permit(:name, :content, :dead_line, :status)
   end
 
   def set_task
