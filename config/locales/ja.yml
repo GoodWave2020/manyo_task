@@ -16,6 +16,9 @@ ja:
       task:
         new: タスクを作成する
         index: タスク一覧へ
+        sort:
+          dead_line: 終了期限が近い順に並び替え
+          created_at: 投稿日が新しい順に並び替え
   Are_you_sure_?: 本当に削除しますか？
   activerecord:
     errors:
