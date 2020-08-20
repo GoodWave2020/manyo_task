@@ -2,10 +2,14 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:sort] == nil
-      @tasks = Task.all.order('created_at DESC')
+    if params[:search] == nil
+      if params[:sort] == nil
+        @tasks = Task.all.order('created_at DESC')
+      else
+        @tasks = Task.all.order(params[:sort])
+      end
     else
-      @tasks = Task.all.order(params[:sort])
+      @tasks = Task.where(status: params[:search])
     end
   end
 
