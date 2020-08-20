@@ -17,6 +17,10 @@
     <%= form.label :content %><br>
     <%= form.text_field :content %>
   </div>
+  <div class="task_dead_line">
+    <%= form.label :dead_line %><br>
+    <%= form.datetime_select :dead_line %>
+  </div>
   <%= form.submit %>
 <% end %>
 <%= link_to t('link_name.models.task.index'), tasks_path %>
