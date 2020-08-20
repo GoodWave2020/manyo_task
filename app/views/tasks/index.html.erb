@@ -10,7 +10,7 @@
   <%= f.submit t('helpers.submit.search') %><%= link_to t('link_name.models.task.clear'), tasks_path %>
 <% end %>
 
-<%= link_to t('link_name.models.task.sort.dead_line'), tasks_path(sort: 'dead_line ASC') %>
+<%= link_to t('link_name.models.task.sort.dead_line'), tasks_path(sort: 'dead_line ASC'), id: 'sort_by_dead_line' %>
 <%= link_to t('link_name.models.task.sort.created_at'), tasks_path(sort: 'created_at DESC') %>
 <table>
   <tr>
