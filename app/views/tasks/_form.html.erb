@@ -21,6 +21,10 @@
     <%= form.label :dead_line %><br>
     <%= form.datetime_select :dead_line %>
   </div>
+  <div class="task_status">
+    <%= form.label :status %><br>
+    <%= form.select :status, ['未着手', '着手中', '完了'] %>
+  </div>
   <%= form.submit %>
 <% end %>
 <%= link_to t('link_name.models.task.index'), tasks_path %>
