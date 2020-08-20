@@ -16,6 +16,7 @@ ja:
       task:
         new: タスクを作成する
         index: タスク一覧へ
+        clear: 戻す
         sort:
           dead_line: 終了期限が近い順に並び替え
           created_at: 投稿日が新しい順に並び替え
@@ -166,6 +167,7 @@ ja:
       delete: 削除
       edit: 編集
     submit:
+      search: 検索
       create: 登録する
       submit: 保存する
       update: 更新する
