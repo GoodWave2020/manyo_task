@@ -22,7 +22,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    puts task_params[:name]
+    @task = Task.new(processed_params)
     if @task.save
       redirect_to tasks_path, notice:t('notice.new')
     else
@@ -51,7 +52,13 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:name, :content, :dead_line, :status)
+    params.require(:task).permit(:name, :content, :dead_line, :status, :priority)
+  end
+
+  def processed_params
+      int_param = task_params
+      int_param[:priority] = int_param[:priority].to_i
+      int_param
   end
 
   def set_task

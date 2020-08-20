@@ -25,6 +25,10 @@
     <%= form.label :status %><br>
     <%= form.select :status, ['未着手', '着手中', '完了'] %>
   </div>
+  <div class="task_priority">
+    <%= form.label :priority %><br>
+    <%= form.number_field :priority %>
+  </div>
   <%= form.submit %>
 <% end %>
 <%= link_to t('link_name.models.task.index'), tasks_path %>
