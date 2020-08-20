@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
-  let!(:task1) { FactoryBot.create(:task, dead_line: '2019-10-04 00:00:00') }
+  let!(:task1) { FactoryBot.create(:task, name: '終了期限が古い', dead_line: '2019-10-04 00:00:00') }
   let!(:task2) { FactoryBot.create(:task, name: 'タスク1', status: '着手中') }
   let!(:task3) { FactoryBot.create(:task, name: 'タスク2') }
   before do
@@ -40,25 +40,28 @@ RSpec.describe 'タスク管理機能', type: :system do
       it '終了期限が古いタスクが一番上に表示される' do
         click_on :sort_by_dead_line
         task_list = all('.task_row')
-        expect(task_list[0]).to have_content '2019-10-04'
+        expect(task_list[0]).to have_content '終了期限が古い'
       end
     end
     context 'タスクが検索された場合' do
       it 'タイトルで検索できる' do
         fill_in :name, with: '2'
         click_on '検索'
+        expect(page).not_to have_content 'タスク1'
         expect(page).to have_content 'タスク2'
       end
       it 'ステータスで検索できる' do
         select '着手中', from: :search
         click_on '検索'
         expect(page).to have_content 'タスク1'
+        expect(page).not_to have_content 'タスク2'
       end
       it 'タイトルとステータスで検索できる' do
         fill_in :name, with: '1'
         select '着手中', from: :search
         click_on '検索'
         expect(page).to have_content 'タスク1'
+        expect(page).not_to have_content 'タスク2'
       end
     end
   end
