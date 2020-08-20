@@ -8,6 +8,7 @@ ja:
         content: 内容
         dead_line: 終了期限
         created_at: 投稿日
+        status: ステータス
       user:
         name: 名前
         login_id: ログインID
