@@ -21,7 +21,6 @@ class TasksController < ApplicationController
   end
 
   def create
-    puts task_params[:name]
     @task = Task.new(processed_params)
     if @task.save
       redirect_to tasks_path, notice:t('notice.new')
