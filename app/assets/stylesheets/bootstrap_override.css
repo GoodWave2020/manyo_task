@@ -74,21 +74,6 @@ input, #search, #task_status, #task_priority {
   padding-top: 70px;
 }
 
-.user_post {
-  margin:20px auto;
-  border: 1.5px solid;
-  border-color: rgb(181, 235, 228);
-  width: 303px;
-}
-
-.post_contents {
-  padding: 0;
-}
-
-.icon {
-  border-radius: 50%;
-}
-
 .navbar-right {
   display: flex;
   align-items: center;
@@ -98,35 +83,6 @@ input, #search, #task_status, #task_priority {
   background-color:#337ab7;
 }
 
-#icon_link {
-  display: block;
-  padding: 0;
-}
-
-#picture_image {
-  display: none;
-}
-
-.picture_field {
-  margin-bottom: 20px;
-}
-
-.confirm_image {
-  width: 300px;
-  height:300px;
-  object-fit: cover;
-}
-
 .confirm_btn_field {
   text-align: center;
-}
-
-.confirm_btn {
-  width:100px;
-  display: inline-block;
-}
-
-.favorite_articles,
-.login_panel {
-  display: inline-block;
 }
