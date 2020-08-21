@@ -5,7 +5,7 @@
 --|--
 id  |integer  
 name  |string  
-login_id |string  
+email |string  
 password_digest  |string  
 
 ### Taskモデル
