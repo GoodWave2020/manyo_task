@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe 'タスクモデル機能', type: :model do
+RSpec.describe 'タスクモデル機能', type: :model do
   describe 'バリデーションのテスト' do
     context 'タスクのタイトルが空の場合' do
       it 'バリデーションにひっかる' do
