@@ -15,7 +15,7 @@ id  |integer
 name  |string
 priority  |integer  
 dead_line  |datetime  
-status  |integer  
+status  |string  
 content  |text  
 user_id  |integer  
 

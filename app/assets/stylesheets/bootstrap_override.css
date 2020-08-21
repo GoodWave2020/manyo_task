@@ -1,0 +1,88 @@
+body {
+  background-color: #FAFAFA;
+}
+.contents_wrapper {
+  min-height: 100vh;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+  padding:0;
+}
+
+.index_title {
+  padding: 10px 0 10px 0;
+}
+
+th, td {
+  text-align: center;
+}
+
+.login_form,
+.signup_form {
+  margin: 20px;
+}
+
+input, #search, #task_status, #task_priority {
+  width: 250px;
+  height: 26px;
+  margin-bottom: 2rem;
+}
+
+.task_dead_line {
+  margin-bottom: 2rem;
+}
+
+#task_content {
+  width: 250px;
+}
+
+#task_priority {
+  margin-bottom: 3rem;
+}
+
+.pagination {
+  display:flex;
+  justify-content: center;
+}
+
+.page, .next, .last {
+  padding-right: 1em;
+}
+
+#session_password {
+  margin-bottom: 30px;
+}
+
+.login_btn,
+.signup_btn {
+  width: 320px;
+}
+
+.navbar_logo {
+  width: 120px;
+  margin-left: 60px;
+}
+
+.article {
+  padding-top: 70px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.icon-bar {
+  background-color:#337ab7;
+}
+
+.confirm_btn_field {
+  text-align: center;
+}

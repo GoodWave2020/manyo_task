@@ -1,22 +1,35 @@
-<%= form_with(model: @task, local: true) do |form| %>
-  <% if @task.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= @task.errors.count %><%= t('activerecord.errors.messages.number_of_errors') %></h2>
-    <ul>
-    <% @task.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+<div class="picture_wrap text-center">
+  <%= form_with(model: @task, local: true) do |form| %>
+    <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @task.errors.count %><%= t('activerecord.errors.messages.number_of_errors') %></h2>
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
     <% end %>
-    </ul>
-  </div>
+    <div class="task_name">
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </div>
+    <div class="task_content">
+      <%= form.label :content %><br>
+      <%= form.text_area :content %>
+    </div>
+    <div class="task_dead_line">
+      <%= form.label :dead_line %><br>
+      <%= form.datetime_select :dead_line%>
+    </div>
+    <div class="task_status">
+      <%= form.label :status %><br>
+      <%= form.select :status, ['未着手', '着手中', '完了'] %>
+    </div>
+    <div class="task_priority">
+      <%= form.label :priority %><br>
+      <%= form.select :priority, {'高': 0, '中': 1, '低': 2} %>
+    </div>
+    <%= form.submit %>
   <% end %>
-  <div class="task_name">
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </div>
-  <div class="task_content">
-    <%= form.label :content %><br>
-    <%= form.text_field :content %>
-  </div>
-  <%= form.submit %>
-<% end %>
-<%= link_to t('link_name.models.task.index'), tasks_path %>
+</div>

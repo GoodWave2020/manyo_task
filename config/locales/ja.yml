@@ -1,5 +1,9 @@
 ---
 ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      short: "%Y/%m/%d %H:%M"
   notice:
     new: タスクが追加されました。
     edit: タスクが編集されました。
@@ -16,6 +20,11 @@ ja:
       task:
         new: タスクを作成する
         index: タスク一覧へ
+        clear: 戻す
+        sort:
+          dead_line: 終了期限が近い順に並び替え
+          created_at: 投稿日が新しい順に並び替え
+          priority: 優先度が高い順に並び替え
   Are_you_sure_?: 本当に削除しますか？
   activerecord:
     errors:
@@ -163,6 +172,7 @@ ja:
       delete: 削除
       edit: 編集
     submit:
+      search: 検索
       create: 登録する
       submit: 保存する
       update: 更新する

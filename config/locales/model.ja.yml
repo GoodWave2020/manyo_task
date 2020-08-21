@@ -6,7 +6,10 @@ ja:
       task:
         name: タイトル
         content: 内容
-        created_at: 投稿時間
+        dead_line: 終了期限
+        created_at: 投稿日
+        status: ステータス
+        priority: 優先度
       user:
         name: 名前
         login_id: ログインID

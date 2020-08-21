@@ -1,8 +1,19 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-
   def index
-    @tasks = Task.all
+    if params[:search] == nil && params[:name] == nil
+      if params[:sort] == nil
+        @tasks = Task.page(params[:page]).per(8).order('created_at DESC')
+      else
+        @tasks = Task.page(params[:page]).per(8).order(params[:sort])
+      end
+    elsif params[:search].blank? && params[:name].present?
+      @tasks = Task.where('name like ?', "%#{params[:name]}%").page(params[:page]).per(8)
+    elsif params[:search].present? && params[:name].blank?
+      @tasks = Task.where(status: params[:search]).page(params[:page]).per(8)
+    else
+      @tasks = Task.where(status: params[:search]).where('name like ?', "%#{params[:name]}%").page(params[:page]).per(8)
+    end
   end
 
   def new
@@ -10,7 +21,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.new(processed_params)
     if @task.save
       redirect_to tasks_path, notice:t('notice.new')
     else
@@ -25,7 +36,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @task.update(task_params)
+    if @task.update(processed_params)
       redirect_to tasks_path, notice:t('notice.edit')
     else
       render :edit
@@ -39,7 +50,13 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:name, :content)
+    params.require(:task).permit(:name, :content, :dead_line, :status, :priority)
+  end
+
+  def processed_params
+      int_param = task_params
+      int_param[:priority] = int_param[:priority].to_i
+      int_param
   end
 
   def set_task
