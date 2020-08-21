@@ -1,19 +1,18 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  PER = 8
   def index
     if params[:search] == nil && params[:name] == nil
       if params[:sort] == nil
-        @tasks = Task.page(params[:page]).per(PER).order('created_at DESC')
+        @tasks = Task.page(params[:page]).per(8).order('created_at DESC')
       else
-        @tasks = Task.all.order(params[:sort])
+        @tasks = Task.page(params[:page]).per(8).order(params[:sort])
       end
     elsif params[:search].blank? && params[:name].present?
-      @tasks = Task.where('name like ?', "%#{params[:name]}%")
+      @tasks = Task.where('name like ?', "%#{params[:name]}%").page(params[:page]).per(8)
     elsif params[:search].present? && params[:name].blank?
-      @tasks = Task.where(status: params[:search])
+      @tasks = Task.where(status: params[:search]).page(params[:page]).per(8)
     else
-      @tasks = Task.where(status: params[:search]).where('name like ?', "%#{params[:name]}%")
+      @tasks = Task.where(status: params[:search]).where('name like ?', "%#{params[:name]}%").page(params[:page]).per(8)
     end
   end
 
