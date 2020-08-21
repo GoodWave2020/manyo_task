@@ -27,7 +27,7 @@
   </div>
   <div class="task_priority">
     <%= form.label :priority %><br>
-    <%= form.number_field :priority %>
+    <%= form.select :priority, {'高': 0, '中': 1, '低': 2} %>
   </div>
   <%= form.submit %>
 <% end %>
