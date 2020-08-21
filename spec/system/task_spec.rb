@@ -2,7 +2,7 @@ require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
   let!(:task1) { FactoryBot.create(:task, name: '終了期限が古い', dead_line: '2019-10-04 00:00:00') }
   let!(:task2) { FactoryBot.create(:task, name: 'タスク1', status: '着手中') }
-  let!(:task3) { FactoryBot.create(:task, name: 'タスク2') }
+  let!(:task3) { FactoryBot.create(:task, name: 'タスク2', priority: 0) }
   before do
     visit tasks_path
   end
@@ -41,6 +41,13 @@ RSpec.describe 'タスク管理機能', type: :system do
         click_on :sort_by_dead_line
         task_list = all('.task_row')
         expect(task_list[0]).to have_content '終了期限が古い'
+      end
+    end
+    context 'タスクが優先順位の降順に並んでいる場合' do
+      it '優先順が高いタスクが一番上に表示される' do
+        click_on :sort_by_priority
+        task_list = all('.task_row')
+        expect(task_list[0]).to have_content '高'
       end
     end
     context 'タスクが検索された場合' do
