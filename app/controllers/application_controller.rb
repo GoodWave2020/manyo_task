@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :basic
-
+  protect_from_forgery with: :exception
+  include SessionsHelper
   private
   def basic
     if Rails.env == "production"
