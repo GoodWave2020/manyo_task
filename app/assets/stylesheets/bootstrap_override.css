@@ -49,7 +49,7 @@ input, #search, #task_status, #task_priority {
 
 .pagination {
   display:flex;
-  align-items: center;
+  justify-content: center;
 }
 
 .page, .next, .last {
