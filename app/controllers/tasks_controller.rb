@@ -1,10 +1,10 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-
+  PER = 8
   def index
     if params[:search] == nil && params[:name] == nil
       if params[:sort] == nil
-        @tasks = Task.all.order('created_at DESC')
+        @tasks = Task.page(params[:page]).per(PER).order('created_at DESC')
       else
         @tasks = Task.all.order(params[:sort])
       end
