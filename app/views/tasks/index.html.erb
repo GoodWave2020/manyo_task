@@ -1,33 +1,36 @@
-<h1><%= t('view_title.models.task.index') %></h1>
 <p><%= notice %></p>
-
-<p><%= t('helpers.submit.search') %></p>
-
-<%= form_with url:tasks_path, method: :get, local: true do |f| %>
+<%= form_with url:tasks_path, method: :get, local: true, class: 'text-center' do |f| %>
   <%= f.select :search, ['未着手', '着手中', '完了'], {include_blank: t('activerecord.attributes.task.status')}  %>
-  <%= f.label :name, t('activerecord.attributes.task.name') %>
-  <%= f.text_field :name %>
-  <%= f.submit t('helpers.submit.search') %><%= link_to t('link_name.models.task.clear'), tasks_path %>
+  <%= f.text_field :name, :placeholder => t('activerecord.attributes.task.name') %>
+  <%= f.submit t('helpers.submit.search') %>
+  <%= link_to t('link_name.models.task.clear'), tasks_path %>
 <% end %>
-
-<%= link_to t('link_name.models.task.sort.dead_line'), tasks_path(sort: 'dead_line ASC'), id: 'sort_by_dead_line' %>
-<%= link_to t('link_name.models.task.sort.priority'), tasks_path(sort: 'priority ASC'), id: 'sort_by_priority' %>
-<%= link_to t('link_name.models.task.sort.created_at'), tasks_path(sort: 'created_at DESC') %>
-<table>
+<h1 class='text-center index_title'><%= t('view_title.models.task.index') %></h1>
+<table class='table'>
   <tr>
     <th><%= t('activerecord.attributes.task.name') %></th>
     <th><%= t('activerecord.attributes.task.content') %></th>
-    <th><%= t('activerecord.attributes.task.created_at') %></th>
-    <th><%= t('activerecord.attributes.task.dead_line') %></th>
+    <th>
+      <%= t('activerecord.attributes.task.created_at') %><br>
+      <%= link_to t('link_name.models.task.sort.created_at'), tasks_path(sort: 'created_at DESC') %>
+    </th>
+    <th>
+      <%= t('activerecord.attributes.task.dead_line') %><br>
+      <%= link_to t('link_name.models.task.sort.dead_line'), tasks_path(sort: 'dead_line ASC'), id: 'sort_by_dead_line' %>
+    </th>
     <th><%= t('activerecord.attributes.task.status') %></th>
-    <th><%= t('activerecord.attributes.task.priority') %></th>
+    <th>
+      <%= t('activerecord.attributes.task.priority') %><br>
+      <%= link_to t('link_name.models.task.sort.priority'), tasks_path(sort: 'priority ASC'), id: 'sort_by_priority' %>
+    </th>
+    <th></th><th></th><th></th>
   </tr>
 <% @tasks.each do |task| %>
   <tr class='task_row'>
     <td><%= task.name %></td>
     <td><%= task.content %></td>
-    <td><%= task.created_at %></td>
-    <td><%= task.dead_line %></td>
+    <td><%= task.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+    <td><%= task.dead_line.strftime("%Y/%m/%d %H:%M") %></td>
     <td><%= task.status %></td>
     <td><%= task.priority %></td>
     <td><%= link_to t('helpers.select.show'), task_path(task.id) %></td>
@@ -37,5 +40,4 @@
   </tr>
 <% end %>
 </table>
-<%= link_to t('link_name.models.task.new'), new_task_path %>
-<%= paginate @tasks %>
+  <%= paginate @tasks, class: 'text-center' %>

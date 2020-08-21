@@ -1,5 +1,9 @@
 ---
 ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      short: "%Y/%m/%d %H:%M"
   notice:
     new: タスクが追加されました。
     edit: タスクが編集されました。

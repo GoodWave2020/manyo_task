@@ -37,7 +37,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @task.update(task_params)
+    if @task.update(processed_params)
       redirect_to tasks_path, notice:t('notice.edit')
     else
       render :edit
