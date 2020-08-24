@@ -1,6 +1,11 @@
 body {
   background-color: #FAFAFA;
 }
+
+li {
+  list-style: none;
+}
+
 .contents_wrapper {
   min-height: 100vh;
   display:flex;

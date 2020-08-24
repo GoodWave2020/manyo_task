@@ -1,10 +1,4 @@
-<div class='text-center'>
-  <h1><%= t('view_title.models.task.show') %></h1>
-  <p><%= t('activerecord.attributes.task.name') %>: <%= @task.name %></p>
-  <p><%= t('activerecord.attributes.task.content') %>: <%= @task.content %></p>
-  <p><%= t('activerecord.attributes.task.created_at') %>: <%= @task.created_at.strftime("%Y/%m/%d %H:%M") %></p>
-  <p><%= t('activerecord.attributes.task.dead_line') %>: <%= @task.dead_line.strftime("%Y/%m/%d %H:%M") %></p>
-  <p><%= t('activerecord.attributes.task.status') %>: <%= @task.status %></p>
-  <p><%= t('activerecord.attributes.task.priority') %>: <%= @task.priority %></p>
-  <%= link_to t('link_name.models.task.index'), tasks_path %>
-</div>
+<h1><%= @user.name %>のページ</h1>
+
+<p>メールアドレス: <%= @user.email %></p>
+<%= link_to 'ユーザー一覧', admin_users_path %>
