@@ -14,6 +14,7 @@ ja:
         name: 名前
         login_id: ログインID
         current_password: 現在のパスワード
+        admin: 管理者
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
