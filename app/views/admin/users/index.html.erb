@@ -1,0 +1,33 @@
+<h1 class='text-center index_title'>ユーザー一覧</h1>
+<table class='table'>
+  <tr>
+    <th><%= t('activerecord.attributes.task.name') %></th>
+    <th>
+      <%= t('activerecord.attributes.task.created_at') %><br>
+      <%= link_to t('link_name.models.task.sort.created_at'), tasks_path(sort: 'created_at DESC') %>
+    </th>
+    <th>
+      <%= t('activerecord.attributes.task.dead_line') %><br>
+      <%= link_to t('link_name.models.task.sort.dead_line'), tasks_path(sort: 'dead_line ASC'), id: 'sort_by_dead_line' %>
+    </th>
+    <th><%= t('activerecord.attributes.task.status') %></th>
+    <th>
+      <%= t('activerecord.attributes.task.priority') %><br>
+      <%= link_to t('link_name.models.task.sort.priority'), tasks_path(sort: 'priority ASC'), id: 'sort_by_priority' %>
+    </th>
+    <th></th><th></th><th></th>
+  </tr>
+<% @tasks.each do |task| %>
+  <tr class='task_row'>
+    <td><%= link_to task.name, task_path(task.id) %></td>
+    <td><%= task.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+    <td><%= task.dead_line.strftime("%Y/%m/%d %H:%M") %></td>
+    <td><%= task.status %></td>
+    <td><%= task.priority %></td>
+    <td><%= link_to t('helpers.select.edit'), edit_task_path(task.id) %></td>
+    <td><%= link_to t('helpers.select.delete'), task_path(task.id),
+            method: :delete, data: { confirm: t('Are_you_sure_?') } %></td>
+  </tr>
+<% end %>
+</table>
+  <%= paginate @tasks %>
