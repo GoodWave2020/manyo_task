@@ -6,16 +6,16 @@ class TasksController < ApplicationController
   def index
     if params[:search] == nil && params[:name] == nil
       if params[:sort] == nil
-        @tasks = Task.page(params[:page]).per(8).order('created_at DESC')
+        @tasks = current_user.tasks.page(params[:page]).per(8).order('created_at DESC')
       else
-        @tasks = Task.page(params[:page]).per(8).order(params[:sort])
+        @tasks = current_user.tasks.page(params[:page]).per(8).order(params[:sort])
       end
     elsif params[:search].blank? && params[:name].present?
-      @tasks = Task.where('name like ?', "%#{params[:name]}%").page(params[:page]).per(8)
+      @tasks = current_user.tasks.where('name like ?', "%#{params[:name]}%").page(params[:page]).per(8)
     elsif params[:search].present? && params[:name].blank?
-      @tasks = Task.where(status: params[:search]).page(params[:page]).per(8)
+      @tasks = current_user.tasks.where(status: params[:search]).page(params[:page]).per(8)
     else
-      @tasks = Task.where(status: params[:search]).where('name like ?', "%#{params[:name]}%").page(params[:page]).per(8)
+      @tasks = current_user.tasks.where(status: params[:search]).where('name like ?', "%#{params[:name]}%").page(params[:page]).per(8)
     end
   end
 
@@ -24,7 +24,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(processed_params)
+    @task = current_user.tasks.new(processed_params)
     if @task.save
       redirect_to tasks_path, notice:t('notice.new')
     else
