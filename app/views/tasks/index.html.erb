@@ -1,4 +1,3 @@
-<p><%= notice %></p>
 <%= form_with url:tasks_path, method: :get, local: true, class: 'text-center' do |f| %>
   <%= f.select :search, ['未着手', '着手中', '完了'], {include_blank: t('activerecord.attributes.task.status')}  %>
   <%= f.text_field :name, :placeholder => t('activerecord.attributes.task.name') %>
