@@ -2,7 +2,12 @@ class UsersController < ApplicationController
   before_action :check_user_for_user
 
   def new
-    @user = User.new
+    if logged_in?
+      flash[:notice] = 'you have already logged in'
+      redirect_to tasks_path
+    else
+      @user = User.new
+    end
   end
 
   def create
