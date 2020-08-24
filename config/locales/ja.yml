@@ -5,9 +5,10 @@ ja:
       default: "%Y/%m/%d %H:%M"
       short: "%Y/%m/%d %H:%M"
   notice:
+    admin: 管理者は削除できません。
     new: タスクが追加されました。
     edit: タスクが編集されました。
-    delete: タスクが削除されました。
+    delete: 削除されました。
     you_have_already_logged_in: すでにログインしています。
     login_needed: ログインが必要です。
     login_failed: ログインに失敗しました。
