@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def new
     if logged_in?
-      flash[:notice] = 'you have already logged in'
+      flash[:notice] = t('notice.you_have_already_logged_in')
       redirect_to tasks_path
     else
       @user = User.new

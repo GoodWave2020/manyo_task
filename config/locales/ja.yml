@@ -8,6 +8,12 @@ ja:
     new: タスクが追加されました。
     edit: タスクが編集されました。
     delete: タスクが削除されました。
+    you_have_already_logged_in: すでにログインしています。
+    login_needed: ログインが必要です。
+    login_failed: ログインに失敗しました。
+    login_succeeded: ログインに成功しました。
+    you_can't_edit_other_user's_profile: 他のユーザーの詳細ページにはアクセスできません。
+    you_can't_destroy_or_edit_other_user's_tasks: 他のユーザーのタスクは編集、削除はできません。
   view_title:
     models:
       task:
