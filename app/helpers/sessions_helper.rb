@@ -14,7 +14,7 @@ module SessionsHelper
   def check_user_for_user
     if @current_user != @user
       flash[:notice] = t("notice.you_can't_edit_other_user's_profile")
-      redirect_to pictures_path
+      redirect_to tasks_path
     end
   end
   def check_user_for_task

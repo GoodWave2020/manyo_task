@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :check_user_for_user
-
+  before_action :current_user
   def new
     if logged_in?
       flash[:notice] = t('notice.you_have_already_logged_in')
@@ -22,6 +21,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    check_user_for_user
   end
 
   private
