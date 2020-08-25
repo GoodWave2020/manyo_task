@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :current_user
   before_action :administrate_user
   def index
-    @users = User.all
+    @users = User.all.includes(:tasks)
   end
 
   def new
