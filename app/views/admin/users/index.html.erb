@@ -2,7 +2,7 @@
 <% @users.order(id: 'ASC').each do |user| %>
   <div class='user_row text-center'>
     <h2>
-      <%= user.id %>
+      <%= user.tasks.count %>
       <%= link_to user.name, admin_user_path(user.id) %>
     </h2>
     <%= admin?(user) %><br>
