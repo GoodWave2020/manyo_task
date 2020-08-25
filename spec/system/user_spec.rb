@@ -48,4 +48,46 @@ RSpec.describe 'タスク管理機能', type: :system do
       end
     end
   end
+  describe '管理機能' do
+    before do
+    visit new_session_path
+    fill_in :session_email, with: 'admin@admin.com'
+    fill_in :session_password, with: 'password'
+    click_on "Log in"
+    end
+    context '管理者がログインしたとき' do
+      it '管理画面にアクセスできる' do
+        visit admin_users_path
+        expect(page).to have_content 'ユーザー一覧'
+      end
+      it 'ユーザーの新規作成ができる' do
+        visit new_admin_user_path
+        fill_in :user_name, with: 'user'
+        fill_in :user_email, with: 'user@user.com'
+        fill_in :user_password, with: 'password'
+        fill_in :user_password_confirmation, with: 'password'
+        click_on "登録する"
+        expect(page).to have_content 'user@user.com'
+      end
+      it 'ユーザーの詳細画面にアクセスできる' do
+        visit admin_user_path(user.id)
+        expect(page).to have_content user.name
+      end
+      it 'ユーザーの編集ができる' do
+        visit edit_admin_user_path(user.id)
+        fill_in :user_name, with: 'editted name'
+        fill_in :user_password, with: 'password'
+        fill_in :user_password_confirmation, with: 'password'
+        click_on '更新する'
+        expect(page).to have_content 'editted name'
+      end
+      it 'ユーザーを削除できる' do
+        visit admin_users_path
+        page.accept_confirm do
+          click_on '削除'
+        end
+        expect(page).not_to have_content 'test_name'
+      end
+    end
+  end
 end
