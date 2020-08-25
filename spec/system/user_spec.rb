@@ -89,5 +89,15 @@ RSpec.describe 'タスク管理機能', type: :system do
         expect(page).not_to have_content 'test_name'
       end
     end
+    context '一般ユーザーがログインしたとき' do
+      it '管理画面にアクセスできない' do
+        click_on "Logout"
+        fill_in :session_email, with: 'test@email.com'
+        fill_in :session_password, with: 'password'
+        click_on "Log in"
+        visit admin_users_path
+        expect(page).not_to have_content 'ユーザー一覧'
+      end
+    end
   end
 end
