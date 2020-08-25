@@ -23,9 +23,15 @@
             </button>
           </div>
           <% if logged_in? %>
+            <% if admin?(@current_user) %>
+              <ul class="nav navbar-nav navbar-left">
+                <li><%= link_to t('view_title.models.user.index'), admin_users_path %></li>
+                <li><%= link_to t('view_title.models.user.new'), new_admin_user_path %></li>
+              </ul>
+            <% end %>
             <div id="gnavi" class="collapse navbar-collapse">
               <ul class="nav navbar-nav navbar-right">
-                <li>現在のログイン : <%= current_user.name %></li>
+                <li><%= t('current_user') %> : <%= current_user.name %></li>
                 <li><%= link_to t('link_name.models.task.index'), tasks_path %></li>
                 <li><%= link_to t('link_name.models.task.new'), new_task_path %></li>
                 <li><%= link_to "Profile", user_path(current_user.id) %></li>
@@ -43,9 +49,11 @@
         </div>
       </nav>
       <div class='article'>
-        <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, class: "#{key}") %>
-        <% end %>
+        <div class='text-center'>
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, class: "#{key}") %>
+          <% end %>
+        </div>
         <%= yield %>
       </div>
     </div>

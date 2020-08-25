@@ -1,4 +1,5 @@
-<h1><%= @user.name %>のページ</h1>
+<div class='text-center'>
+  <h1><%= @user.name %><%= t('view_title.models.user.show') %></h1>
 
-<p>メールアドレス: <%= @user.email %></p>
-<%= link_to 'ユーザー一覧', admin_users_path %>
+  <p><%= t('activerecord.attributes.user.email') %>: <%= @user.email %></p>
+</div>

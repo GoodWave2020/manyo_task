@@ -11,7 +11,7 @@ class User < ApplicationRecord
   private
   def ensure_admin_or_not
     if self.admin == true
-      errors.add :base, "管理者は削除できません"
+      errors.add :base, '管理者権限が必要です。'
       throw(:abort)
     end
   end

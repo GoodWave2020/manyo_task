@@ -1,8 +1,10 @@
-<h1 class='text-center index_title'>ユーザー一覧</h1>
-<% @users.each do |user| %>
+<h1 class='text-center index_title'><%= t('view_title.models.user.index') %></h1>
+<% @users.order(id: 'ASC').each do |user| %>
   <div class='user_row text-center'>
-    <%= user.id %>
-    <%= link_to user.name, admin_user_path(user.id) %>
+    <h2>
+      <%= user.id %>
+      <%= link_to user.name, admin_user_path(user.id) %>
+    </h2>
     <%= admin?(user) %><br>
     <%= link_to t('helpers.select.edit'), edit_admin_user_path(user.id) %><br>
     <%= link_to t('helpers.select.delete'), admin_user_path(user.id),

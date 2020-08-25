@@ -1,17 +1,11 @@
-<h1>Sign up</h1>
+<h1 class='text-center'><%= t('view_title.models.user.new') %></h1>
 
 <%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "Create my account" %>
+<div class='text-center'>
+    <%= f.text_field :name, :placeholder => t('activerecord.attributes.user.name') %><br>
+  <%= f.email_field :email, :placeholder => t('activerecord.attributes.user.email') %><br>
+  <%= f.password_field :password, :placeholder => t('activerecord.attributes.user.password') %><br>
+  <%= f.password_field :password_confirmation, :placeholder => t('activerecord.attributes.user.password_confirmation') %><br>
+  <%= f.submit %>
+</div>
 <% end %>

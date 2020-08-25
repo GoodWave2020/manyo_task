@@ -1,3 +1,5 @@
-<h1><%= @user.name %>のページ</h1>
+<div class='text-center'>
+  <h1><%= @user.name %><%= t('view_title.models.user.show') %></h1>
 
-<p>メールアドレス: <%= @user.email %></p>
+  <p><%= t('activerecord.attributes.user.email') %>: <%= @user.email %></p>
+</div>

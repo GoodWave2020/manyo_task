@@ -1,5 +1,6 @@
 ---
 ja:
+  current_user: 現在のログイン
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
@@ -23,6 +24,12 @@ ja:
         show: タスク詳細
         new: タスクを作成する
         edit: タスクを編集する
+      user:
+        index: ユーザー一覧
+        show: の詳細
+        new: 新規登録
+        edit: プロフィール編集
+      session: ログイン
   link_name:
     models:
       task:
