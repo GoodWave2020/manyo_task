@@ -9,4 +9,5 @@ User.create!(name: 'first',
                email: 'first@first.com',
                password: 'password',
                password_confirmation: 'password',
+               admin: true
                )
