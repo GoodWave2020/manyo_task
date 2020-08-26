@@ -6,7 +6,7 @@ ja:
       default: "%Y/%m/%d %H:%M"
       short: "%Y/%m/%d %H:%M"
   notice:
-    admin: 管理者は削除できません。
+    admin: 管理者が1人もいない状態にはできません。
     new: タスクが追加されました。
     edit: タスクが編集されました。
     delete: 削除されました。

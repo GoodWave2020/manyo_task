@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  before_destroy :ensure_admin_or_not
+  before_destroy :ensure_admin_count
   before_validation { email.downcase! }
   validates :name, presence: true, length: { maximum: 30 }
   validates :email, presence: true, length: { maximum: 255 },
@@ -9,9 +9,9 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
 
   private
-  def ensure_admin_or_not
-    if self.admin == true
-      errors.add :base, '管理者権限が必要です。'
+  def ensure_admin_count
+    if User.all.where(admin: true).count == 1 
+      errors.add :base, '管理者が1人もいない状態にはできません'
       throw(:abort)
     end
   end
