@@ -84,7 +84,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       it 'ユーザーを削除できる' do
         visit admin_users_path
         page.accept_confirm do
-          click_on '削除'
+          page.all(".delete")[0].click_on '削除' 
         end
         expect(page).not_to have_content 'test_name'
       end

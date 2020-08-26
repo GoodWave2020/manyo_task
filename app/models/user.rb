@@ -10,9 +10,11 @@ class User < ApplicationRecord
 
   private
   def ensure_admin_count
-    if User.all.where(admin: true).count == 1 
-      errors.add :base, '管理者が1人もいない状態にはできません'
-      throw(:abort)
+    if self.admin
+      if User.all.where(admin: true).count == 1
+        errors.add :base, '管理者が1人もいない状態にはできません'
+        throw(:abort)
+      end
     end
   end
 end
