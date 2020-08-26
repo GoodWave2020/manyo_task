@@ -24,7 +24,7 @@ module SessionsHelper
     end
   end
   def administrate_user
-    if @current_user != User.find_by(admin: true)
+    unless @current_user.admin
       flash[:notice] = t('notice.you_are_not_administrator')
       redirect_to tasks_path
     end
