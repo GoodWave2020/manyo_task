@@ -6,5 +6,10 @@
   <p><%= t('activerecord.attributes.task.dead_line') %>: <%= @task.dead_line.strftime("%Y/%m/%d %H:%M") %></p>
   <p><%= t('activerecord.attributes.task.status') %>: <%= @task.status %></p>
   <p><%= t('activerecord.attributes.task.priority') %>: <%= @task.priority %></p>
+  <p>タグ:
+    <% @task.labels.each do |label| %>
+    <%= label.name %>
+    <% end %>
+  </p>
   <%= link_to t('link_name.models.task.index'), tasks_path %>
 </div>
