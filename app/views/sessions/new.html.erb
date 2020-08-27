@@ -1,0 +1,8 @@
+<h1 class='text-center'><%= t('view_title.models.session') %></h1>
+<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+  <div class='text-center'>
+    <%= f.email_field :email, :placeholder => t('activerecord.attributes.user.email') %><br>
+    <%= f.password_field :password, :placeholder => t('activerecord.attributes.user.password') %><br>
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>

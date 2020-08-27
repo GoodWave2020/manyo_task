@@ -1,9 +1,9 @@
-<%= form_with url:tasks_path, method: :get, local: true, class: 'text-center' do |f| %>
-  <%= f.select :search, ['未着手', '着手中', '完了'], {include_blank: t('activerecord.attributes.task.status')}  %>
-  <%= f.text_field :name, :placeholder => t('activerecord.attributes.task.name') %>
-  <%= f.submit t('helpers.submit.search') %>
-  <%= link_to t('link_name.models.task.clear'), tasks_path %>
-<% end %>
+<div class='text-center'>
+  <h1><%= @user.name %><%= t('view_title.models.user.show') %></h1>
+
+  <p><%= t('activerecord.attributes.user.email') %>: <%= @user.email %></p>
+</div>
+
 <h1 class='text-center index_title'><%= t('view_title.models.task.index') %></h1>
 <table class='table'>
   <tr>
@@ -23,17 +23,16 @@
     </th>
     <th></th><th></th><th></th>
   </tr>
-<% @tasks.each do |task| %>
-  <tr>
-    <td class='task_row_created'><%= link_to task.name, task_path(task.id) %></td>
+<% @user.tasks.each do |task| %>
+  <tr class='task_row'>
+    <td><%= link_to task.name, task_path(task.id) %></td>
     <td><%= task.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-    <td class='task_row_dead_line'><%= task.dead_line.strftime("%Y/%m/%d %H:%M") %></td>
+    <td><%= task.dead_line.strftime("%Y/%m/%d %H:%M") %></td>
     <td><%= task.status %></td>
-    <td class='task_row_priority'><%= task.priority %></td>
+    <td><%= task.priority %></td>
     <td><%= link_to t('helpers.select.edit'), edit_task_path(task.id) %></td>
     <td><%= link_to t('helpers.select.delete'), task_path(task.id),
             method: :delete, data: { confirm: t('Are_you_sure_?') } %></td>
   </tr>
 <% end %>
 </table>
-  <%= paginate @tasks %>

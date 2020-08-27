@@ -1,0 +1,11 @@
+<h1 class='text-center'><%= t('view_title.models.user.new') %></h1>
+
+<%= form_with(model: @user, local: true) do |f| %>
+<div class='text-center'>
+    <%= f.text_field :name, :placeholder => t('activerecord.attributes.user.name') %><br>
+  <%= f.email_field :email, :placeholder => t('activerecord.attributes.user.email') %><br>
+  <%= f.password_field :password, :placeholder => t('activerecord.attributes.user.password') %><br>
+  <%= f.password_field :password_confirmation, :placeholder => t('activerecord.attributes.user.password_confirmation') %><br>
+  <%= f.submit %>
+</div>
+<% end %>

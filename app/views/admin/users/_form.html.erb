@@ -1,0 +1,12 @@
+<%= form_with(model: @user, local: true, url: choose_new_or_edit) do |f| %>
+  <div class='text-center'>
+      <%= f.text_field :name, :placeholder => t('activerecord.attributes.user.name') %><br>
+    <%= f.email_field :email, :placeholder => t('activerecord.attributes.user.email') %><br>
+    <%= f.password_field :password, :placeholder => t('activerecord.attributes.user.password') %><br>
+    <%= f.password_field :password_confirmation, :placeholder => t('activerecord.attributes.user.password_confirmation') %><br>
+    <%= f.label :admin %>
+    <%= f.check_box :admin, {}, 'true', 'false' %><br>
+
+    <%= f.submit %>
+  </div>
+  <% end %>

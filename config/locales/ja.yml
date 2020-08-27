@@ -1,13 +1,22 @@
 ---
 ja:
+  current_user: 現在のログイン
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
       short: "%Y/%m/%d %H:%M"
   notice:
+    admin: 管理者が1人もいない状態にはできません。
     new: タスクが追加されました。
     edit: タスクが編集されました。
-    delete: タスクが削除されました。
+    delete: 削除されました。
+    you_have_already_logged_in: すでにログインしています。
+    login_needed: ログインが必要です。
+    login_failed: ログインに失敗しました。
+    logout: ログアウトしました。
+    you_are_not_administrator: 管理者権限が必要です。
+    you_can't_edit_other_user's_profile: 他のユーザーの詳細ページにはアクセスできません。
+    you_can't_destroy_or_edit_other_user's_tasks: 他のユーザーのタスクは編集、削除はできません。
   view_title:
     models:
       task:
@@ -15,6 +24,12 @@ ja:
         show: タスク詳細
         new: タスクを作成する
         edit: タスクを編集する
+      user:
+        index: ユーザー一覧
+        show: の詳細
+        new: 新規登録
+        edit: プロフィール編集
+      session: ログイン
   link_name:
     models:
       task:
