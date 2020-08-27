@@ -24,12 +24,12 @@
     <th></th><th></th><th></th>
   </tr>
 <% @tasks.each do |task| %>
-  <tr class='task_row'>
-    <td><%= link_to task.name, task_path(task.id) %></td>
+  <tr>
+    <td class='task_row_created'><%= link_to task.name, task_path(task.id) %></td>
     <td><%= task.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-    <td><%= task.dead_line.strftime("%Y/%m/%d %H:%M") %></td>
+    <td class='task_row_dead_line'><%= task.dead_line.strftime("%Y/%m/%d %H:%M") %></td>
     <td><%= task.status %></td>
-    <td><%= task.priority %></td>
+    <td class='task_row_priority'><%= task.priority %></td>
     <td><%= link_to t('helpers.select.edit'), edit_task_path(task.id) %></td>
     <td><%= link_to t('helpers.select.delete'), task_path(task.id),
             method: :delete, data: { confirm: t('Are_you_sure_?') } %></td>
