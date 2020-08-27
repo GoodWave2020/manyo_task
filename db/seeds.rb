@@ -11,3 +11,4 @@ User.create!(name: 'second',
                password_confirmation: 'password',
                admin: true
                )
+Label.create!(name: 'デート')
