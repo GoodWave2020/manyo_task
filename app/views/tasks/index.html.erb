@@ -1,6 +1,7 @@
 <%= form_with url:tasks_path, method: :get, local: true, class: 'text-center' do |f| %>
   <%= f.select :search, ['未着手', '着手中', '完了'], {include_blank: t('activerecord.attributes.task.status')}  %>
   <%= f.text_field :name, :placeholder => t('activerecord.attributes.task.name') %>
+  <%= f.select :label_id, Label.pluck(:name, :id), { include_blank: 'タグ' } %>
   <%= f.submit t('helpers.submit.search') %>
   <%= link_to t('link_name.models.task.clear'), tasks_path %>
 <% end %>

@@ -38,7 +38,7 @@ th, td {
   margin: 20px;
 }
 
-input, #search, #task_status, #task_priority {
+input, #search, #task_status, #task_priority, #label_id {
   width: 250px;
   height: 26px;
   margin-bottom: 2rem;
