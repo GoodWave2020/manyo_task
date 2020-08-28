@@ -25,13 +25,14 @@
     <th><%= t('activerecord.attributes.label.name') %></th>
     <th></th><th></th>
   </tr>
+<% task_count = 0 %>
 <% @tasks.each do |task| %>
   <tr>
-    <td class='task_row_created'><%= link_to task.name, task_path(task.id) %></td>
+    <td class='task_created_<%= task_count %>'><%= link_to task.name, task_path(task.id) %></td>
     <td><%= task.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-    <td class='task_row_dead_line'><%= task.dead_line.strftime("%Y/%m/%d %H:%M") %></td>
+    <td class='task_dead_line_<%= task_count %>'><%= task.dead_line.strftime("%Y/%m/%d %H:%M") %></td>
     <td><%= task.status %></td>
-    <td class='task_row_priority'><%= task.priority %></td>
+    <td class="task_priority_<%= task_count %>"><%= task.priority %></td>
     <td id='labels'>
       <% task.labels.each do |label| %>
       <%= label.name %>
@@ -41,6 +42,7 @@
     <td><%= link_to t('helpers.select.delete'), task_path(task.id),
             method: :delete, data: { confirm: t('Are_you_sure_?') } %></td>
   </tr>
+  <% task_count = task_count + 1 %>
 <% end %>
 </table>
   <%= paginate @tasks %>

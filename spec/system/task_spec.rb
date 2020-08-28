@@ -36,22 +36,19 @@ RSpec.describe 'タスク管理機能', type: :system do
     end
     context 'タスクが作成日時の降順に並んでいる場合' do
       it '新しいタスクが一番上に表示される' do
-        task_list = all('.task_row_created')
-        expect(task_list[0]).to have_content 'タスク1'
+        expect(find('.task_created_0')).to have_content 'タスク1'
       end
     end
     context 'タスクが終了期限の昇順に並んでいる場合' do
       it '終了期限が古いタスクが一番上に表示される' do
         click_on :sort_by_dead_line
-        task_list = all('.task_row_dead_line')
-        expect(task_list[0]).to have_content '2019'
+        expect(find('.task_dead_line_0')).to have_content '2019'
       end
     end
     context 'タスクが優先順位の降順に並んでいる場合' do
       it '優先順が高いタスクが一番上に表示される' do
         click_on :sort_by_priority
-        task_list = all('.task_row_priority')
-        expect(task_list[0]).to have_content '高'
+        expect(find('.task_priority_0')).to have_content '高'
       end
     end
     context 'タスクが検索された場合' do
