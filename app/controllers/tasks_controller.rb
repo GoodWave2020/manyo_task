@@ -4,18 +4,32 @@ class TasksController < ApplicationController
   before_action :authenticate_user
   before_action :check_user_for_task, only: [:edit, :update, :destroy]
   def index
-    if params[:search] == nil && params[:name] == nil
+    if params[:search] == nil && params[:name] == nil && params[:label_id] == nil
       if params[:sort] == nil
         @tasks = current_user.tasks.page(params[:page]).per(8).order('created_at DESC')
       else
         @tasks = current_user.tasks.page(params[:page]).per(8).order(params[:sort])
       end
-    elsif params[:search].blank? && params[:name].present?
-      @tasks = current_user.tasks.where('name like ?', "%#{params[:name]}%").page(params[:page]).per(8)
+    elsif params[:label_id].present? && params[:name].blank? && params[:search].blank?
+      @tasks = current_user.tasks.joins(:labels).where(labels: { id: params[:label_id] }).page(params[:page]).per(8)
+    elsif params[:name].present? && params[:search].blank?
+      if params[:label_id].blank?
+        @tasks = current_user.tasks.where('tasks.name like ?', "%#{params[:name]}%").page(params[:page]).per(8)
+      else
+        @tasks = current_user.tasks.joins(:labels).where(labels: { id: params[:label_id] }).where('tasks.name like ?', "%#{params[:name]}%").page(params[:page]).per(8)
+      end
     elsif params[:search].present? && params[:name].blank?
-      @tasks = current_user.tasks.where(status: params[:search]).page(params[:page]).per(8)
+      if params[:label_id].blank?
+        @tasks = current_user.tasks.where(status: params[:search]).page(params[:page]).per(8)
+      else
+        @tasks = current_user.tasks.joins(:labels).where(labels: { id: params[:label_id] }).where(status: params[:search]).page(params[:page]).per(8)
+      end
     else
-      @tasks = current_user.tasks.where(status: params[:search]).where('name like ?', "%#{params[:name]}%").page(params[:page]).per(8)
+      if params[:label_id].blank?
+        @tasks = current_user.tasks.where(status: params[:search]).where('tasks.name like ?', "%#{params[:name]}%").page(params[:page]).per(8)
+      else
+        @tasks = current_user.tasks.joins(:labels).where(labels: { id: params[:label_id] }).where(status: params[:search]).where('tasks.name like ?', "%#{params[:name]}%").page(params[:page]).per(8)
+      end
     end
   end
 
@@ -53,7 +67,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:name, :content, :dead_line, :status, :priority)
+    params.require(:task).permit(:name, :content, :dead_line, :status, :priority, { label_ids: [] })
   end
 
   def processed_params

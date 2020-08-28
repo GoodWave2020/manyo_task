@@ -23,8 +23,14 @@ user_id  |integer
 テーブル名  |データ型  
 --|--
 id  |integer  
+name  |string
+
+### Labellingモデル
+テーブル名  |データ型  
+--|--
+id  |integer  
 task_id  |integer
-user_id  |integer
+label_id  |integer
 
 ## herokuデプロイ手順
 1. アプリのディレクトリに移動

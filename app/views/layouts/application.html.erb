@@ -27,11 +27,19 @@
               <ul class="nav navbar-nav navbar-left">
                 <li><%= link_to t('view_title.models.user.index'), admin_users_path %></li>
                 <li><%= link_to t('view_title.models.user.new'), new_admin_user_path %></li>
+                <li><%= link_to t('view_title.models.label.index'), labels_path %></li>
               </ul>
             <% end %>
             <div id="gnavi" class="collapse navbar-collapse">
               <ul class="nav navbar-nav navbar-right">
-                <li><%= t('current_user') %> : <%= current_user.name %></li>
+                <li>
+                  <%= t('current_user') %> : <%= current_user.name %>
+                  <% if admin?(@current_user) %>
+                    (<%= t('admin') %>)
+                  <% else %>
+                    (<%= t('public') %>)
+                  <% end %>
+                </li>
                 <li><%= link_to t('link_name.models.task.index'), tasks_path %></li>
                 <li><%= link_to t('link_name.models.task.new'), new_task_path %></li>
                 <li><%= link_to "Profile", user_path(current_user.id) %></li>

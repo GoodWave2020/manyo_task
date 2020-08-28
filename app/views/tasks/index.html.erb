@@ -1,11 +1,12 @@
 <%= form_with url:tasks_path, method: :get, local: true, class: 'text-center' do |f| %>
   <%= f.select :search, ['未着手', '着手中', '完了'], {include_blank: t('activerecord.attributes.task.status')}  %>
   <%= f.text_field :name, :placeholder => t('activerecord.attributes.task.name') %>
+  <%= f.select :label_id, Label.pluck(:name, :id), { include_blank: 'タグ' } %>
   <%= f.submit t('helpers.submit.search') %>
   <%= link_to t('link_name.models.task.clear'), tasks_path %>
 <% end %>
 <h1 class='text-center index_title'><%= t('view_title.models.task.index') %></h1>
-<table class='table'>
+<table class='table' id='index_table'>
   <tr>
     <th><%= t('activerecord.attributes.task.name') %></th>
     <th>
@@ -21,19 +22,27 @@
       <%= t('activerecord.attributes.task.priority') %><br>
       <%= link_to t('link_name.models.task.sort.priority'), tasks_path(sort: 'priority ASC'), id: 'sort_by_priority' %>
     </th>
-    <th></th><th></th><th></th>
+    <th><%= t('activerecord.attributes.label.name') %></th>
+    <th></th><th></th>
   </tr>
+<% task_count = 0 %>
 <% @tasks.each do |task| %>
   <tr>
-    <td class='task_row_created'><%= link_to task.name, task_path(task.id) %></td>
+    <td class='task_created_<%= task_count %>'><%= link_to task.name, task_path(task.id) %></td>
     <td><%= task.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-    <td class='task_row_dead_line'><%= task.dead_line.strftime("%Y/%m/%d %H:%M") %></td>
+    <td class='task_dead_line_<%= task_count %>'><%= task.dead_line.strftime("%Y/%m/%d %H:%M") %></td>
     <td><%= task.status %></td>
-    <td class='task_row_priority'><%= task.priority %></td>
+    <td class="task_priority_<%= task_count %>"><%= task.priority %></td>
+    <td id='labels'>
+      <% task.labels.each do |label| %>
+      <%= label.name %>
+      <% end %>
+    </td>
     <td><%= link_to t('helpers.select.edit'), edit_task_path(task.id) %></td>
     <td><%= link_to t('helpers.select.delete'), task_path(task.id),
             method: :delete, data: { confirm: t('Are_you_sure_?') } %></td>
   </tr>
+  <% task_count = task_count + 1 %>
 <% end %>
 </table>
   <%= paginate @tasks %>

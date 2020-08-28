@@ -38,10 +38,25 @@ th, td {
   margin: 20px;
 }
 
-input, #search, #task_status, #task_priority {
+#search,
+#task_status,
+#task_priority,
+#label_id,
+#task_name,
+#user_name,
+#user_email,
+#user_password,
+#user_password_confirmation,
+#session_email,
+#session_password,
+#name {
   width: 250px;
   height: 26px;
   margin-bottom: 2rem;
+}
+
+label {
+  display: inline-block;
 }
 
 .task_dead_line {
@@ -67,6 +82,10 @@ input, #search, #task_status, #task_priority {
 
 #session_password {
   margin-bottom: 30px;
+}
+
+.task_checkbox {
+  display: inline-block;
 }
 
 .login_btn,
