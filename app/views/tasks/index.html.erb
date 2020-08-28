@@ -22,7 +22,7 @@
       <%= t('activerecord.attributes.task.priority') %><br>
       <%= link_to t('link_name.models.task.sort.priority'), tasks_path(sort: 'priority ASC'), id: 'sort_by_priority' %>
     </th>
-    <th>タグ</th>
+    <th><%= t('activerecord.attributes.label.name') %></th>
     <th></th><th></th>
   </tr>
 <% @tasks.each do |task| %>
