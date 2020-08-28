@@ -8,7 +8,7 @@
     )
 }
 
-1.upto(10){|num|
+1.upto(1){|num|
    Label.find_or_initialize_by(id: num).update_attributes!(
        name: "number#{num}"
     )
