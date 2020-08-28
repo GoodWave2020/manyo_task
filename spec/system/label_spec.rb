@@ -53,7 +53,7 @@ RSpec.describe 'ラベル機能', type: :system do
         visit new_task_path
         fill_in :task_name, with: 'task'
         fill_in :task_content, with: 'task'
-        check 'task_label_ids_1'
+        check 'MyString'
         click_on "登録する"
         expect(page).to have_content 'MyString'
       end
@@ -61,8 +61,8 @@ RSpec.describe 'ラベル機能', type: :system do
         visit new_task_path
         fill_in :task_name, with: 'task'
         fill_in :task_content, with: 'task'
-        check 'task_label_ids_1'
-        check 'task_label_ids_2'
+        check 'MyString'
+        check 'YourString'
         click_on "登録する"
         within('table#index_table') do
           expect(page).to have_content 'MyString'
@@ -74,12 +74,12 @@ RSpec.describe 'ラベル機能', type: :system do
       let!(:labelling) { FactoryBot.create(:labelling, task_id: task.id, label_id: label.id) }
       it 'ラベリング済みのラベルにチェックが付いている' do
         visit edit_task_path(task.id)
-        checkbox = find("#task_label_ids_1")
+        checkbox = find("#task_label_ids_#{label.id}")
         expect(checkbox).to be_checked
       end
       it 'ラベリングを解除することができる' do
         visit edit_task_path(task.id)
-        uncheck 'task_label_ids_1'
+        uncheck 'MyString'
         click_on '更新する'
         within('table#index_table') do
           expect(page).not_to have_content 'MyString'
@@ -87,7 +87,7 @@ RSpec.describe 'ラベル機能', type: :system do
       end
       it '追加でラベリングすることができる' do
         visit edit_task_path(task.id)
-        check 'task_label_ids_2'
+        check 'YourString'
         click_on '更新する'
         within('table#index_table') do
           expect(page).to have_content 'YourString'
