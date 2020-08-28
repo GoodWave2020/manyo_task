@@ -1,11 +1,18 @@
-10.times do |n|
+9.times do |n|
   User.create!(name: "Mr.sample#{n}",
                email: "number#{n}@seeds.com",
                password: 'password',
                password_confirmation: 'password',
-               admin: true
+               admin: false
                )
 end
+
+User.create!(name: "Mr.admin",
+             email: "admin@admin.com",
+             password: 'password',
+             password_confirmation: 'password',
+             admin: true
+             )
 
 10.times do |n|
   Label.create!(name: "number#{n}")
