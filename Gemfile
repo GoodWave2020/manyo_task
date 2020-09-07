@@ -41,10 +41,16 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
+  gem 'capistrano', '3.6.0' # capistranoのツール一式
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 gem 'dotenv-rails'
-
+gem 'unicorn' # アプリケーションサーバのunicorn
+gem 'mini_racer', platforms: :ruby # デプロイ時に必要
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
